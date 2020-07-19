@@ -46,6 +46,7 @@ const authSignup = (req, res, next) => {
 };
 
 const authSignin = async (req, res, next) => {
+  console.log(req.body);
   let user = await User.findOne({ email: req.body.email });
   if (!user)
     return res.status(400).json({ loegged: false, body: 'Invalid Loging' });

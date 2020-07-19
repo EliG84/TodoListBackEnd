@@ -9,7 +9,6 @@ const {
   authSignup,
   authSignin,
 } = require('../Middleware/auth');
-const { findById } = require('../Models/User');
 const router = express.Router();
 
 router.get('/getTodos', authToken, async (req, res) => {
@@ -44,8 +43,6 @@ router.post('/addTodo', authToken, async (req, res) => {
   res.status(200).json(user.todos);
 });
 
-module.exports = router;
-
 router.get('/delTodo/:id', authToken, async (req, res) => {
   const id = req.params.id;
   let data = await User.updateOne(
@@ -60,3 +57,5 @@ router.get('/delTodo/:id', authToken, async (req, res) => {
     res.status(400).json('Task was not removed');
   }
 });
+
+module.exports = router;
