@@ -4,10 +4,10 @@ const mongoConnect = require('./Data/mongo');
 
 mongoConnect();
 
+app.use(cors());
 const app = express();
 const port = process.env.port || 3001;
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
