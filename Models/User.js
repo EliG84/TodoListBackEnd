@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const mongoose = require('../DB/mongo');
 const bcrypt = require('bcrypt');
 const Todo = require('./Todo');
 const Schema = mongoose.Schema;
@@ -8,7 +7,7 @@ const UserSchema = new Schema({
   email: String,
   password: String,
   answer: String,
-  todos: [Todo],
+  todos: { type: [Todo], default: [] },
 });
 
 UserSchema.pre('save', function (next) {
@@ -20,6 +19,8 @@ UserSchema.pre('save', function (next) {
         next();
       });
     });
+  } else {
+    next();
   }
 });
 
