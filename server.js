@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const mongoConnect = require('./DB/mongo');
+const mongoConnect = require('./Data/mongo');
 
 mongoConnect();
 
